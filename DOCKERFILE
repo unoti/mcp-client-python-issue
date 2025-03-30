@@ -1,0 +1,42 @@
+# Use Ubuntu as the base image
+FROM ubuntu:22.04
+
+# Set non-interactive mode during build
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Update and install Python 3.10 and essential dependencies
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    python3.10 \
+    python3-pip \
+    python3.10-dev \
+    && ln -sf /usr/bin/python3.10 /usr/bin/python \
+    && ln -sf /usr/bin/python3.10 /usr/bin/python3 \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Verify Python version
+RUN python --version
+
+# Create directory for volume mounting
+RUN mkdir -p /usr/code
+
+# Set the working directory
+WORKDIR /usr/code
+
+# Volume configuration for code mounting
+VOLUME ["/usr/code"]
+
+# Default command to run when the container starts
+CMD ["bash"]
+
+
+#--- Build instructions, podman or docker:
+# podman build --tag linux-lab-08b --file DOCKERFILE .
+
+#--- Run instructions
+# Run the following with podman or docker, replacing "your-src-path" with the path to your src/:
+# podman run -it --rm -v "your-src-path:/usr/code" linux-lab-08b bash
+# Then from the vm:
+# cd /usr/code
+# python mcp_client.py
