@@ -1,5 +1,7 @@
 # MCP SDK Client Python Issue
 
+Created [Issue 395 on MCP Python Github](https://github.com/modelcontextprotocol/python-sdk/issues/395)
+
 This repo is to demonstrate and diagnose an issue we're having with the Python MCP stdio
 client. What happens is it never finishes initializes the server. What I expect to
 happen is for it to initialize the server successfully so that we can start
