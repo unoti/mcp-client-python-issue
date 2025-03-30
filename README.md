@@ -2,6 +2,21 @@
 
 Created [Issue 395 on MCP Python Github](https://github.com/modelcontextprotocol/python-sdk/issues/395)
 
+**Update**: Was able to make a Python client that connects to a node-based server.
+Whatever is wrong here appears to be with **MCP Server* rather than the client.
+I was able to get `mcp_client2.py` to work on my machine under Windows.
+```
+Ultra Basic MCP Client
+sys.executable='C:\\Users\\rilack\\code\\mcp-client-python-issue\\venv\\Scripts\\python.exe'
+Python version 3.10.16 (main, Mar 17 2025, 20:54:03) [MSC v.1943 64 bit (AMD64)]
+Initializing session...
+Session initialized successfully.
+Available tools:
+- execute_command: Execute a terminal command with timeout. Command will continue running in background if it doesn't complete within timeout.
+- read_output: Read new output from a running terminal session.
+- force_terminate: Force terminate a running terminal session...
+```
+
 This repo is to demonstrate and diagnose an issue we're having with the Python MCP stdio
 client. What happens is it never finishes initializes the server. What I expect to
 happen is for it to initialize the server successfully so that we can start
